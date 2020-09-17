@@ -29,3 +29,7 @@ def RequestItilium(dict_data):
 @app.route('/',  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
     raise NotImplementedError
+
+
+def f():
+    reise NotImplementedError 
