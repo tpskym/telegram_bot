@@ -2,9 +2,10 @@ import requests
 from flask import Flask, request, Response
 import json
 
+app = Flask(__name__)
 
 def test():
-    auth_key = os.environ['DATABASE_URL']
+    auth_key = os.environ['AUTH_KEY_BOT']
 
 
 def RequestItilium(dict_data):
@@ -25,11 +26,18 @@ def RequestItilium(dict_data):
        return True, "Ошибка соединения с Итилиум. Обратитесь к администратору.", False
 
 
+@app.route('/setWebHook',  methods=['GET'])
+def setWeebHook():
+    dict_data = dict()
+    print(request.url)
+    dict_data.update("url", request.url)
+    requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/", data = json.dumps(dict_data).encode('utf-8'))
+    
+
+
 
 @app.route('/',  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
-    raise NotImplementedError
+    print("new message")
 
 
-def fddf():
-    reise NotImplementedError 
