@@ -33,7 +33,8 @@ def setWeebHook():
     address = request.url.replace("setWebHook","")
     print(address)
     dict_data.update( {"url": address} )
-    requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/", data = json.dumps(dict_data).encode('utf-8'))
+    
+    # requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/", data = json.dumps(dict_data).encode('utf-8'))
     
 
 
