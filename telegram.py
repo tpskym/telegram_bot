@@ -27,7 +27,7 @@ def test():
 #        return True, "Ошибка соединения с Итилиум. Обратитесь к администратору.", False
 
 
-@app.route('/setWebHook',  methods=['GET'])
+@app.route('/getWebhookInfo',  methods=['GET'])
 def getWwebHookInfo():
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/getWebhookInfo")
     return ret.text
@@ -35,7 +35,7 @@ def getWwebHookInfo():
 @app.route('/setWebHook',  methods=['GET'])
 def setWeebHook():
     dict_data = dict()
-    address = request.url.replace("setWebHook","")
+    address = request.url.replace("setWebHook",os.environ['AUTH_KEY_BOT'])
     print(address)
     dict_data.update( {"url": address} )
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/setWebhook", data = json.dumps(dict_data).encode('utf-8'))
@@ -45,7 +45,7 @@ def setWeebHook():
 
 
 
-@app.route('/',  methods=['POST'])
+@app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
     print("new message")
 
