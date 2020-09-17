@@ -28,14 +28,19 @@ def test():
 
 
 @app.route('/setWebHook',  methods=['GET'])
+def getWwebHookInfo():
+    ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/getWebhookInfo")
+    return ret
+
+@app.route('/setWebHook',  methods=['GET'])
 def setWeebHook():
     dict_data = dict()
     address = request.url.replace("setWebHook","")
     print(address)
     dict_data.update( {"url": address} )
-    requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/", data = json.dumps(dict_data).encode('utf-8'))
+    ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/setWebhook", data = json.dumps(dict_data).encode('utf-8'))
     
-    return "ok"
+    return ret
     
 
 
