@@ -5,8 +5,6 @@ import json
 
 app = Flask(__name__)
 
-def test():
-    auth_key = os.environ['AUTH_KEY_BOT']
 
 
 # def RequestItilium(dict_data):
