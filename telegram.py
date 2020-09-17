@@ -44,6 +44,7 @@ def setWeebHook():
 @app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['GET'])
 def test():
     print("rrrrrr")
+    return "sdsd"
 
 @app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
