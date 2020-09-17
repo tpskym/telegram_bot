@@ -30,7 +30,7 @@ def test():
 @app.route('/setWebHook',  methods=['GET'])
 def getWwebHookInfo():
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/getWebhookInfo")
-    return ret
+    return ret.text
 
 @app.route('/setWebHook',  methods=['GET'])
 def setWeebHook():
@@ -40,7 +40,7 @@ def setWeebHook():
     dict_data.update( {"url": address} )
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/setWebhook", data = json.dumps(dict_data).encode('utf-8'))
     
-    return ret
+    return ret.text
     
 
 
