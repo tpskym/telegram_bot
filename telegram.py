@@ -44,8 +44,6 @@ def setWebHook():
 @app.route('/removeWebHook',  methods=['GET'])
 def removeWebHook():
     dict_data = dict()
-    address = request.url.replace("setWebHook",os.environ['AUTH_KEY_BOT'])
-    print(address)
     dict_data.update( {"url": ""} )
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/setWebhook", data = json.dumps(dict_data).encode('utf-8'))
     
@@ -59,5 +57,9 @@ def test():
 @app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
     print("new message")
+
+@app.route('/' + os.environ['AUTH_KEY_BOT'] + "/",  methods=['POST'])
+def IncomingConnectionPostWithSlash(parameter_list):
+    print("new message slash")
 
 
