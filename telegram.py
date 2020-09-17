@@ -43,7 +43,7 @@ def setWeebHook():
     return ret.text
     
 
-@app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
+@app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['GET'])
 def test():
     print("rrrrrr")
 
