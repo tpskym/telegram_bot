@@ -26,12 +26,12 @@ app = Flask(__name__)
 
 
 @app.route('/getWebhookInfo',  methods=['GET'])
-def getWwebHookInfo():
+def getWebHookInfo():
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/getWebhookInfo")
     return ret.text
 
 @app.route('/setWebHook',  methods=['GET'])
-def setWeebHook():
+def setWebHook():
     dict_data = dict()
     address = request.url.replace("setWebHook",os.environ['AUTH_KEY_BOT'])
     print(address)
@@ -40,6 +40,16 @@ def setWeebHook():
     
     return ret.text
     
+
+@app.route('/removeWebHook',  methods=['GET'])
+def removeWebHook():
+    dict_data = dict()
+    address = request.url.replace("setWebHook",os.environ['AUTH_KEY_BOT'])
+    print(address)
+    dict_data.update( {"url": ""} )
+    ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/setWebhook", data = json.dumps(dict_data).encode('utf-8'))
+    
+    return ret.text
 
 @app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['GET'])
 def test():
