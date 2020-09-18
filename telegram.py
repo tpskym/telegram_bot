@@ -33,7 +33,8 @@ def getWebHookInfo():
 @app.route('/setWebHook',  methods=['GET'])
 def setWebHook():
     dict_data = dict()
-    address = request.url.replace("setWebHook",os.environ['AUTH_KEY_BOT'])
+    # address = request.url.replace("setWebHook",os.environ['AUTH_KEY_BOT'])
+    address = request.url.replace("\setWebHook", '')
     print(address)
     dict_data.update( {"url": address} )
     dict_data.update( {"method": "application/json"} )
@@ -53,17 +54,18 @@ def removeWebHook():
     
     return ret.text
 
-@app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['GET'])
-def test():
-    print("rrrrrr")
-    return "sdsd"
+# @app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['GET'])
+# def test():
+#     print("rrrrrr")
+#     return "sdsd"
 
-@app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
+# @app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
+@app.route('/' ,  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
     print("new message")
 
-@app.route('/' + os.environ['AUTH_KEY_BOT'] + "/",  methods=['POST'])
-def IncomingConnectionPostWithSlash(parameter_list):
-    print("new message slash")
+# @app.route('/' + os.environ['AUTH_KEY_BOT'] + '/',  methods=['POST'])
+# def IncomingConnectionPostWithSlash(parameter_list):
+#     print("new message slash")
 
 
