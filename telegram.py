@@ -63,7 +63,7 @@ def removeWebHook():
 #     print("rrrrrr")
 #     return "sdsd"
 
-@app.route('/' + os.environ['AUTH_KEY_BOT'] + '/',  methods=['POST'])
+@app.route('/' + os.environ['AUTH_KEY_BOT'],  methods=['POST'])
 def IncomingConnectionPost(parameter_list):
     print("new message")
 
