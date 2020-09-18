@@ -37,6 +37,7 @@ def setWebHook():
     print(address)
     dict_data.update( {"url": address} )
     dict_data.update( {"method": "application/json"} )
+    print(dict_data)
     
     ret = requests.post("https://api.telegram.org/bot" + os.environ['AUTH_KEY_BOT'] + "/setWebhook", data = json.dumps(dict_data).encode('utf-8'))
     
