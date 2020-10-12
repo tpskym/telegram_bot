@@ -13,6 +13,7 @@ auth_key =  os.environ['AuthKey']
 
 @app.route('/getWebhookInfo',  methods=['GET'])
 def getWebHookInfo():
+    # это только на время теста, надо скрывать в продакшене
     ret = requests.post("https://api.telegram.org/bot" + auth_key + "/getWebhookInfo")
     return ret.text
 
